@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-4">Sorting Visualizer</h1>
+        <p class="text-gray-600 mb-8">Watch the magic of sorting algorithms in action.</p>
+
+        <div id="visualizer-container" class="visualizer"></div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="array-size" class="text-sm font-medium text-gray-700">Array Size</label>
+                <input type="range" id="array-size" min="5" max="15" value="15">
+            </div>
+            
+            <div class="control-group">
+                <label for="speed-slider" class="text-sm font-medium text-gray-700">Speed (ms)</label>
+                <input type="range" id="speed-slider" min="10" max="500" value="50">
+            </div>
+
+            <div class="control-group">
+                <label for="algorithm-selector" class="text-sm font-medium text-gray-700">Algorithm</label>
+                <select id="algorithm-selector">
+                    <option value="bubbleSort">Bubble Sort</option>
+                    <option value="selectionSort">Selection Sort</option>
+                    <option value="insertionSort">Insertion Sort</option>
+                    <option value="mergeSort">Merge Sort</option>
+                    <option value="quickSort">Quick Sort</option>
+                </select>
+            </div>
+
+            <div class="control-group action-buttons">
+                <button id="generate-array-btn">New Array</button>
+                <button id="start-sort-btn">Start Sort</button>
+                <button id="pause-sort-btn" class="hidden">Pause Sort</button>
+                <button id="resume-sort-btn" class="hidden">Resume Sort</button>
+                <button id="explain-btn">✨ Explain Algorithm</button>
+                <button id="quiz-btn">✨ Quiz Me!</button>
+            </div>
+
+            <div class="control-group user-input-group mt-4 w-full">
+                <label for="user-input" class="text-sm font-medium text-gray-700">Or, Enter Your Own Array (comma-separated, 5-15 numbers)</label>
+                <div class="flex items-center w-full">
+                    <input type="text" id="user-input" class="flex-grow p-2 border rounded" placeholder="e.g., 50,20,80,45,60">
+                    <button id="use-custom-btn" class="ml-2 bg-blue-500 text-white p-2 rounded">Use Custom Array</button>
+                </div>
+                <div id="message-box" class="message-box text-center"></div>
+            </div>
+
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-item">
+                <span id="comparisons-count" class="text-xl">0</span>
+                <p class="text-sm text-gray-600">Comparisons</p>
+            </div>
+            <div class="stat-item">
+                <span id="swaps-count" class="text-xl">0</span>
+                <p class="text-sm text-gray-600">Swaps</p>
+            </div>
+        </div>
+
+        <div class="color-key-box">
+            <h3 class="text-lg font-bold mb-2">Color Key</h3>
+            <div class="flex flex-wrap gap-4">
+                <div class="color-key-item">
+                    <div class="color-swatch bg-blue-500"></div>
+                    <p class="text-sm text-gray-700">Unsorted</p>
+                </div>
+                <div class="color-key-item">
+                    <div class="color-swatch bg-yellow-400"></div>
+                    <p class="text-sm text-gray-700">Comparing</p>
+                </div>
+                <div class="color-key-item">
+                    <div class="color-swatch bg-red-600"></div>
+                    <p class="text-sm text-gray-700">Swapping / Overwriting</p>
+                </div>
+                <div class="color-key-item">
+                    <div class="color-swatch" style="background-color: #8b5cf6;"></div>
+                    <p class="text-sm text-gray-700">Active Element</p>
+                </div>
+                <div class="color-key-item">
+                    <div class="color-swatch bg-green-500"></div>
+                    <p class="text-sm text-gray-700">Sorted</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="explanation-container" class="mt-8 text-left bg-gray-100 p-6 rounded-lg shadow">
+            <h2 class="text-2xl font-bold mb-2">Algorithm Explanation</h2>
+            <p id="explanation-text" class="text-gray-700">Select an algorithm and click "✨ Explain Algorithm" to learn how it works!</p>
+        </div>
+
+        <div id="quiz-container" class="mt-8 text-left bg-gray-100 p-6 rounded-lg shadow hidden">
+            <h2 class="text-2xl font-bold mb-2">Quiz</h2>
+            <div id="quiz-content" class="text-gray-700"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
