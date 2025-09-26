@@ -30,7 +30,7 @@ let comparisonCounter = 0;
 let swapCounter = 0;
 
 // Gemini API Configuration
-const API_KEY = ""; // Use the provided API key
+const API_KEY = "AIzaSyAysCQ02buzvs4IfcdDDdhQjU6dZyicnsA"; // Use the provided API key
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
 
 // Event Listeners
@@ -627,3 +627,4 @@ function partition(arr, low, high, animations) {
 
 // Initialize the app
 generateArray();
+
